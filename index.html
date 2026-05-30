@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Flip Me Not</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<div id="hud">
+
+    <div id="logo">
+        Flip Me Not
+    </div>
+
+    <div id="distance">
+        Distance: 0
+    </div>
+
+    <div id="coins">
+        Coins: 0
+    </div>
+
+</div>
+
+<button id="pauseBtn">
+    <i class="fa-solid fa-pause"></i>
+</button>
+
+<!-- START MENU -->
+
+<div class="screen"
+id="startScreen"
+style="display:flex;">
+
+    <div class="panel">
+
+        <div id="title">
+            Flip<br>Me Not
+        </div>
+
+        <div id="subtitle">
+            Flip gravity.<br>
+            Dodge spikes.<br>
+            Survive forever.
+        </div>
+
+        <button
+        class="menuBtn playBtn"
+        id="playBtn">
+            Play
+        </button>
+
+        <button
+        class="menuBtn configBtn"
+        id="configBtn">
+            Configure
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="leaderboardBtn">
+            Leaderboard
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="settingsBtn">
+            Settings
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SETTINGS -->
+
+<div class="screen hidden"
+id="settingsScreen"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Settings
+        </h1>
+
+        <div class="audioRow">
+
+            <button
+            class="menuBtn settingsBtn"
+            id="musicToggle">
+                Music: ON
+            </button>
+
+            <button
+            class="dotsBtn"
+            id="musicAdvancedBtn">
+                ⋮
+            </button>
+
+        </div>
+
+        <div
+        id="musicAdvanced"
+        style="display:none;">
+
+            <div class="settingLabel">
+                Music Volume
+            </div>
+
+            <input
+            type="range"
+            min="0"
+            max="100"
+            value="45"
+            id="musicVolumeSlider">
+
+        </div>
+
+        <div class="audioRow">
+
+            <button
+            class="menuBtn settingsBtn"
+            id="soundToggle">
+                Sounds: ON
+            </button>
+
+            <button
+            class="dotsBtn"
+            id="soundAdvancedBtn">
+                ⋮
+            </button>
+
+        </div>
+
+        <div
+        id="soundAdvanced"
+        style="display:none;">
+
+            <div class="settingLabel">
+                Sound Volume
+            </div>
+
+            <input
+            type="range"
+            min="0"
+            max="100"
+            value="80"
+            id="soundVolumeSlider">
+
+        </div>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="creditsBtn">
+            Credits
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="aboutBtn">
+            About
+        </button>
+
+        <button
+        class="menuBtn playBtn"
+        id="closeSettingsBtn">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<!-- CONFIGURE -->
+
+<div class="screen hidden"
+id="configScreen"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Configure
+        </h1>
+
+        <div class="settingLabel">
+            Name
+        </div>
+
+        <input
+        class="settingInput"
+        id="nameInput"
+        maxlength="18"
+        placeholder="Player">
+
+        <div class="settingLabel">
+            Age:
+            <span id="ageText">
+                13
+            </span>
+        </div>
+
+        <input
+        type="range"
+        min="5"
+        max="21"
+        value="13"
+        id="ageSlider">
+
+        <div class="settingLabel">
+            Cube Color
+        </div>
+
+        <input
+        type="color"
+        id="cubeColor"
+        value="#7488e8">
+
+        <button
+        class="menuBtn configBtn"
+        id="saveCubeBtn">
+            Save Color
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="comingSoonBtn">
+            Custom Images: Coming Soon
+        </button>
+
+        <button
+        class="menuBtn playBtn"
+        id="closeConfigBtn">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<!-- LEADERBOARD -->
+
+<div class="screen hidden"
+id="leaderboardScreen"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Leaderboard
+        </h1>
+
+        <div id="leaderboardList">
+
+        </div>
+
+        <button
+        class="menuBtn playBtn"
+        id="closeLeaderboardBtn">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<!-- CREDITS -->
+
+<div class="screen hidden"
+id="creditsScreen"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Credits
+        </h1>
+
+        <p>
+            Game Design & Development
+            <br>
+            Arclen Corporation
+        </p>
+
+        <br>
+
+        <p>
+            Music
+            <br>
+            Sunset Travel.mp3
+        </p>
+
+        <br>
+
+        <p>
+            Sound Effects
+            <br>
+            Death.mp3
+        </p>
+
+        <button
+        class="menuBtn playBtn"
+        id="closeCreditsBtn">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ABOUT -->
+
+<div class="screen hidden"
+id="aboutScreen"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            About
+        </h1>
+
+        <p>
+            Flip Me Not is a fast-paced gravity-flipping arcade game.
+            Reverse gravity to dodge deadly spikes, collect coins,
+            survive as long as possible, and beat your personal best.
+            Challenge yourself to master precise timing and climb the
+            leaderboard while customizing your cube.
+        </p>
+
+        <button
+        class="menuBtn playBtn"
+        id="closeAboutBtn">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<!-- PAUSE -->
+
+<div class="screen hidden"
+id="pauseMenu"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Paused
+        </h1>
+
+        <button
+        class="menuBtn playBtn"
+        id="resumeBtn">
+            Resume
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="pauseHomeBtn">
+            Go Home
+        </button>
+
+    </div>
+
+</div>
+
+<!-- GAME OVER -->
+
+<div class="screen hidden"
+id="gameOver"
+style="display:none;">
+
+    <div class="panel">
+
+        <h1>
+            Game Over
+        </h1>
+
+        <div id="finalDistance">
+            Distance: 0
+        </div>
+
+        <div id="finalCoins">
+            Coins: 0
+        </div>
+
+        <button
+        class="menuBtn playBtn"
+        id="restartBtn">
+            Restart
+        </button>
+
+        <button
+        class="menuBtn settingsBtn"
+        id="homeBtn">
+            Go Home
+        </button>
+
+    </div>
+
+</div>
+
+<script
+type="module"
+src="js/game.js">
+</script>
+
+</body>
+</html>
